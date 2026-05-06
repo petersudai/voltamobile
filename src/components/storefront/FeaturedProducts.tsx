@@ -21,15 +21,15 @@ export async function FeaturedProducts() {
   const [hero, ...rest] = products as unknown as Product[];
 
   return (
-    <section className="py-24 bg-gray-950 border-t border-white/5">
+    <section className="py-16 sm:py-24 bg-gray-950 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
-        <div className="flex items-end justify-between mb-12">
+        <div className="flex items-end justify-between mb-8 sm:mb-12">
           <div>
-            <p className="text-blue-500 text-xs font-bold uppercase tracking-[0.2em] mb-3">
+            <p className="text-blue-500 text-xs font-bold uppercase tracking-[0.2em] mb-2 sm:mb-3">
               Handpicked
             </p>
-            <h2 className="text-4xl sm:text-5xl font-black text-white tracking-tight leading-none">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-none">
               Featured<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400">
                 This Week
@@ -46,16 +46,16 @@ export async function FeaturedProducts() {
         </div>
 
         {/* Bento grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          {/* Prime card — spans 2 columns, full-bleed editorial */}
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+          {/* Prime card — full width on mobile, 2-col on lg */}
           {hero && (
-            <div className="lg:col-span-2">
+            <div className="col-span-2 lg:col-span-2">
               <PrimeFeatureCard product={hero} />
             </div>
           )}
 
-          {/* Side stack */}
-          <div className="flex flex-col gap-4">
+          {/* Side stack — stacks below prime on mobile, column on lg */}
+          <div className="col-span-2 sm:col-span-1 lg:col-span-1 grid grid-cols-2 sm:grid-cols-1 gap-3 sm:gap-4">
             {rest.slice(0, 2).map((p) => (
               <ProductCard key={p.id} product={p} className="flex-1" />
             ))}

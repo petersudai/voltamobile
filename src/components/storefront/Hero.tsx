@@ -57,7 +57,7 @@ export function Hero({ heroImageUrl, heroProduct }: HeroProps) {
           }}
         />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 sm:py-36 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 lg:py-36 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* ── Left column ── */}
           <div>
             <motion.div
@@ -70,7 +70,7 @@ export function Hero({ heroImageUrl, heroProduct }: HeroProps) {
                 Nairobi CBD · Moi Avenue
               </div>
 
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-[1.02] tracking-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-black text-white leading-[1.02] tracking-tight">
                 Premium{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400">
                   Phones.
@@ -106,11 +106,11 @@ export function Hero({ heroImageUrl, heroProduct }: HeroProps) {
                 </a>
               </div>
 
-              <div className="mt-12 flex items-center gap-8">
+              <div className="mt-10 flex items-center gap-5 sm:gap-8">
                 {stats.map((stat) => (
                   <div key={stat.label}>
-                    <p className="text-2xl font-black text-white">{stat.value}</p>
-                    <p className="text-xs text-gray-400 mt-0.5">{stat.label}</p>
+                    <p className="text-xl sm:text-2xl font-black text-white">{stat.value}</p>
+                    <p className="text-[11px] sm:text-xs text-gray-400 mt-0.5">{stat.label}</p>
                   </div>
                 ))}
               </div>
@@ -124,7 +124,7 @@ export function Hero({ heroImageUrl, heroProduct }: HeroProps) {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="relative flex justify-center lg:justify-end"
           >
-            <div className="relative w-64 sm:w-72">
+            <div className="relative w-52 sm:w-64 lg:w-72">
               {/* Glow ring */}
               <div className="absolute inset-0 bg-blue-500/20 rounded-[40px] blur-2xl scale-110" />
 
@@ -145,14 +145,14 @@ export function Hero({ heroImageUrl, heroProduct }: HeroProps) {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.6 }}
-                className="absolute -right-6 sm:-right-10 top-16 bg-white rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3 border border-gray-100"
+                className="absolute -right-4 sm:-right-8 lg:-right-10 top-14 bg-white rounded-2xl shadow-xl px-3 py-2.5 sm:px-4 sm:py-3 flex items-center gap-2.5 border border-gray-100"
               >
-                <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center">
-                  <span className="text-lg">🔋</span>
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                  <span className="text-base sm:text-lg">🔋</span>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500">Battery Health</p>
-                  <p className="text-sm font-bold text-emerald-600">
+                  <p className="text-[10px] sm:text-xs text-gray-500">Battery Health</p>
+                  <p className="text-xs sm:text-sm font-bold text-emerald-600">
                     {batteryPct ? `${batteryPct}% Excellent` : "Certified"}
                   </p>
                 </div>
@@ -163,7 +163,7 @@ export function Hero({ heroImageUrl, heroProduct }: HeroProps) {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.75 }}
-                className="absolute -left-6 sm:-left-10 bottom-24 bg-white rounded-2xl shadow-xl px-4 py-3 border border-gray-100 max-w-[170px]"
+                className="absolute -left-4 sm:-left-8 lg:-left-10 bottom-20 sm:bottom-24 bg-white rounded-2xl shadow-xl px-3 py-2.5 sm:px-4 sm:py-3 border border-gray-100 max-w-[145px] sm:max-w-[170px]"
               >
                 <p className="text-xs text-gray-500 line-clamp-1">{priceBadge.label}</p>
                 <p className="text-sm font-bold text-gray-900 mt-0.5">{priceBadge.price}</p>

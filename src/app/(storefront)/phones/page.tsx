@@ -98,12 +98,12 @@ export default async function PhonesPage({
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex flex-col lg:flex-row gap-8">
-          {/* Filter sidebar */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
+        <div className="flex flex-col lg:flex-row gap-3 lg:gap-8">
+          {/* Filter sidebar / mobile sheet trigger */}
           <Suspense
             fallback={
-              <div className="w-60 h-96 bg-[#0e0e12] rounded-3xl border border-white/[0.06] animate-pulse" />
+              <div className="hidden lg:block w-60 h-96 bg-[#0e0e12] rounded-3xl border border-white/[0.06] animate-pulse" />
             }
           >
             <FilterSidebar brands={brands as never} />
@@ -115,7 +115,7 @@ export default async function PhonesPage({
               <EmptyState />
             ) : (
               <>
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4">
                   {products.map((product) => (
                     <ProductCard key={product.id} product={product as unknown as Product} />
                   ))}

@@ -89,44 +89,44 @@ export function ProductCard({ product, className, priority = false }: ProductCar
       </div>
 
       {/* Content */}
-      <div className="p-4 flex flex-col flex-1 gap-3">
+      <div className="p-3 sm:p-4 flex flex-col flex-1 gap-2 sm:gap-3">
         {/* Brand + name */}
         <div>
-          <p className="text-[10px] font-bold text-gray-600 uppercase tracking-[0.18em] mb-1">
+          <p className="text-[10px] font-bold text-gray-600 uppercase tracking-[0.18em] mb-0.5 sm:mb-1">
             {product.brand.name}
           </p>
-          <h3 className="text-white/85 font-semibold text-sm leading-snug line-clamp-2 group-hover:text-white transition-colors duration-200">
+          <h3 className="text-white/85 font-semibold text-[13px] sm:text-sm leading-snug line-clamp-2 group-hover:text-white transition-colors duration-200">
             {product.name}
           </h3>
         </div>
 
-        {/* Spec chips */}
-        <div className="flex items-center gap-1.5 flex-wrap">
-          <span className="text-[11px] text-gray-600 bg-white/[0.04] border border-white/[0.05] px-2 py-0.5 rounded-md">
+        {/* Spec chips — hide RAM on smallest screens to save space */}
+        <div className="flex items-center gap-1 sm:gap-1.5 flex-wrap">
+          <span className="text-[10px] sm:text-[11px] text-gray-600 bg-white/[0.04] border border-white/[0.05] px-1.5 sm:px-2 py-0.5 rounded-md">
             {product.storageCapacity}
           </span>
-          <span className="text-[11px] text-gray-600 bg-white/[0.04] border border-white/[0.05] px-2 py-0.5 rounded-md">
+          <span className="text-[10px] sm:text-[11px] text-gray-600 bg-white/[0.04] border border-white/[0.05] px-1.5 sm:px-2 py-0.5 rounded-md">
             {product.color}
           </span>
           {product.ram && (
-            <span className="text-[11px] text-gray-600 bg-white/[0.04] border border-white/[0.05] px-2 py-0.5 rounded-md">
+            <span className="hidden sm:inline-flex text-[11px] text-gray-600 bg-white/[0.04] border border-white/[0.05] px-2 py-0.5 rounded-md">
               {product.ram}
             </span>
           )}
         </div>
 
         {/* Price */}
-        <div className="mt-auto flex items-end justify-between gap-2">
+        <div className="mt-auto flex items-end justify-between gap-1 sm:gap-2">
           <div>
-            <p className="text-lg font-black text-amber-400 leading-none">
+            <p className="text-base sm:text-lg font-black text-amber-400 leading-none">
               {formatKES(product.priceKES)}
             </p>
             {product.priceUSD && (
-              <p className="text-[11px] text-gray-600 mt-1">{formatUSD(product.priceUSD)}</p>
+              <p className="hidden sm:block text-[11px] text-gray-600 mt-1">{formatUSD(product.priceUSD)}</p>
             )}
           </div>
           {hasDiscount && (
-            <p className="text-xs text-gray-700 line-through pb-0.5">
+            <p className="text-[10px] sm:text-xs text-gray-700 line-through pb-0.5">
               {formatKES(product.marketPriceKES!)}
             </p>
           )}

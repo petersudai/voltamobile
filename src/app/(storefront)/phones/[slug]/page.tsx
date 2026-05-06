@@ -45,7 +45,7 @@ export default async function ProductDetailPage({ params }: Props) {
   const showBattery = p.batteryHealth && ["EX_UK", "REFURBISHED", "USED"].includes(p.condition);
 
   return (
-    <div className="min-h-screen bg-[#09090c] pt-20">
+    <div className="min-h-screen bg-[#09090c] pt-20 pb-24 sm:pb-0">
       {/* Breadcrumbs */}
       <div className="border-b border-white/[0.06]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
@@ -63,8 +63,8 @@ export default async function ProductDetailPage({ params }: Props) {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16">
           {/* Left: Image gallery */}
           <div>
             <ProductImageGallery images={p.images} alt={p.name} />
@@ -139,16 +139,19 @@ export default async function ProductDetailPage({ params }: Props) {
               )}
             </div>
 
-            {/* WhatsApp CTA */}
+            {/* WhatsApp CTA — sticky bottom bar on mobile, inline on desktop */}
             <div className="flex flex-col gap-3">
-              <WhatsAppButton
-                productName={p.name}
-                condition={p.condition}
-                priceKES={p.priceKES}
-                size="lg"
-                fullWidth
-              />
-              <div className="flex items-center gap-4 text-xs text-gray-400 justify-center">
+              {/* Desktop CTA (hidden on mobile — the sticky bar below handles it) */}
+              <div className="hidden sm:block">
+                <WhatsAppButton
+                  productName={p.name}
+                  condition={p.condition}
+                  priceKES={p.priceKES}
+                  size="lg"
+                  fullWidth
+                />
+              </div>
+              <div className="flex items-center gap-3 sm:gap-4 text-xs text-gray-400 justify-center flex-wrap">
                 <span className="flex items-center gap-1">
                   <MapPin className="w-3.5 h-3.5" /> Nairobi CBD
                 </span>
@@ -172,7 +175,7 @@ export default async function ProductDetailPage({ params }: Props) {
             )}
 
             {/* Trust signals */}
-            <div className="grid grid-cols-2 gap-3 border-t border-white/[0.06] pt-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 border-t border-white/[0.06] pt-5">
               {[
                 { icon: "🏪", label: "Physical store", sub: "Inspect in person" },
                 { icon: "🔋", label: "Battery certified", sub: "Health tested & shown" },
@@ -189,6 +192,22 @@ export default async function ProductDetailPage({ params }: Props) {
               ))}
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* ── Mobile sticky CTA bar ─────────────────────────────────────────────── */}
+      <div className="sm:hidden fixed bottom-0 left-0 right-0 z-30 bg-[#09090c]/95 backdrop-blur-xl border-t border-white/[0.08] px-4 py-3" style={{ paddingBottom: "calc(0.75rem + env(safe-area-inset-bottom))" }}>
+        <div className="flex items-center gap-3">
+          <div className="flex-1 min-w-0">
+            <p className="text-[11px] text-gray-500 leading-none mb-0.5 truncate">{p.name}</p>
+            <p className="text-lg font-black text-amber-400 leading-none">{formatKES(p.priceKES)}</p>
+          </div>
+          <WhatsAppButton
+            productName={p.name}
+            condition={p.condition}
+            priceKES={p.priceKES}
+            size="md"
+          />
         </div>
       </div>
     </div>

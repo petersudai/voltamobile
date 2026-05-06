@@ -1,6 +1,4 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
+# ── Dependencies ──────────────────────────────────────────────────────────────
 /node_modules
 /.pnp
 .pnp.*
@@ -10,32 +8,61 @@
 !.yarn/releases
 !.yarn/versions
 
-# testing
-/coverage
+# ── Environment files ─────────────────────────────────────────────────────────
+# *.local files contain real secrets (DB URL, NextAuth secret, API keys).
+# .env.example is safe to commit — it is a template with no real values.
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.production
+.env
 
-# next.js
+# ── Prisma generated client ───────────────────────────────────────────────────
+# Regenerated automatically by `npm install` via the postinstall hook.
+# Never commit this — it can be stale and is not portable across environments.
+/src/generated/
+
+# ── Next.js build output ──────────────────────────────────────────────────────
 /.next/
 /out/
-
-# production
 /build
 
-# misc
-.DS_Store
-*.pem
+# ── Turbopack cache ───────────────────────────────────────────────────────────
+.turbo/
 
-# debug
+# ── Uploaded product & hero images ───────────────────────────────────────────
+# The uploads/ folder is created at runtime. We track only the .gitkeep
+# placeholder so the directory is re-created on clone without committing images.
+/public/uploads/*
+!/public/uploads/.gitkeep
+
+# ── Testing ───────────────────────────────────────────────────────────────────
+/coverage
+
+# ── Logs ──────────────────────────────────────────────────────────────────────
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# ── OS & editor artefacts ─────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/settings.json
 
-# vercel
-.vercel
+# ── Certificates & keys ───────────────────────────────────────────────────────
+*.pem
+*.key
+*.p12
+*.pfx
 
-# typescript
+# ── TypeScript build info ─────────────────────────────────────────────────────
 *.tsbuildinfo
 next-env.d.ts
+
+# ── Vercel ────────────────────────────────────────────────────────────────────
+.vercel

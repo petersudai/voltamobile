@@ -1,0 +1,74 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Brand {
+  id        String    @id @default(cuid())
+  name      String    @unique
+  slug      String    @unique
+  logoUrl   String?
+  products  Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Product {
+  id              String    @id @default(cuid())
+  name            String
+  slug            String    @unique
+  brandId         String
+  brand           Brand     @relation(fields: [brandId], references: [id])
+  modelName       String
+  storageCapacity String
+  ram             String?
+  color           String
+  condition       Condition
+  batteryHealth   Int?
+  priceKES        Int
+  priceUSD        Int?
+  marketPriceKES  Int?
+  marketPriceUSD  Int?
+  images          String[]
+  description     String?
+  isAvailable     Boolean   @default(true)
+  isFeatured      Boolean   @default(false)
+  isHero          Boolean   @default(false)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([modelName])
+  @@index([condition])
+  @@index([storageCapacity])
+  @@index([brandId])
+  @@index([priceKES])
+  @@index([isFeatured])
+  @@index([isHero])
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Generic key-value store for site-wide settings (hero image, etc.)
+model SiteSettings {
+  key       String   @id   // e.g. "heroImageUrl"
+  value     String
+  updatedAt DateTime @updatedAt
+}
+
+enum Condition {
+  BRAND_NEW
+  EX_UK
+  REFURBISHED
+  USED
+}

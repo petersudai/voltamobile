@@ -55,6 +55,19 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ urls });
   }
 
+  // ── Production guard ──────────────────────────────────────────────────────
+  // Vercel's filesystem is read-only at runtime. If BLOB_READ_WRITE_TOKEN is
+  // missing we cannot write files — return a clear error instead of crashing.
+  if (process.env.VERCEL) {
+    return NextResponse.json(
+      {
+        error:
+          "Image uploads are not configured. Set BLOB_READ_WRITE_TOKEN in your Vercel project environment variables (Dashboard → Storage → Create Blob store → connect to project).",
+      },
+      { status: 503 }
+    );
+  }
+
   // ── Development: local filesystem ─────────────────────────────────────────
   // Files land in public/uploads/ and are served as /uploads/<filename>.
   // This folder is gitignored; it only exists on your local machine.

@@ -1,3 +1,4 @@
+import { Pool } from "pg";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "../generated/prisma/client";
 
@@ -6,8 +7,16 @@ const globalForPrisma = globalThis as unknown as {
 };
 
 function createPrismaClient() {
-  const connectionString = process.env.DATABASE_URL!;
-  const adapter = new PrismaPg({ connectionString });
+  // max:1 — each serverless function instance holds at most one connection.
+  // On Vercel, many concurrent invocations share Supabase's pool safely.
+  // Pair this with the Transaction pooler URL (port 6543) in your env vars.
+  const pool = new Pool({
+    connectionString: process.env.DATABASE_URL!,
+    max: 1,
+  });
+
+  const adapter = new PrismaPg(pool);
+
   return new PrismaClient({
     adapter,
     log: process.env.NODE_ENV === "development" ? ["error"] : [],
@@ -16,4 +25,6 @@ function createPrismaClient() {
 
 export const prisma = globalForPrisma.prisma ?? createPrismaClient();
 
-if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
+// Always cache on globalThis — safe in production because Vercel warm containers
+// reuse the same global, and prevents HMR from spawning duplicate clients in dev.
+globalForPrisma.prisma = prisma;

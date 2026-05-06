@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
-import { writeFile, mkdir } from "fs/promises";
-import { join } from "path";
 import { randomUUID } from "crypto";
 
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/avif"];
@@ -21,7 +19,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "No files provided" }, { status: 400 });
   }
 
-  // Validate each file
   for (const file of files) {
     if (!ALLOWED_TYPES.includes(file.type)) {
       return NextResponse.json(
@@ -31,16 +28,41 @@ export async function POST(req: NextRequest) {
     }
     if (file.size > MAX_SIZE_BYTES) {
       return NextResponse.json(
-        { error: `File "${file.name}" exceeds 10 MB limit` },
+        { error: `"${file.name}" exceeds the 10 MB limit` },
         { status: 400 }
       );
     }
   }
 
+  const urls: string[] = [];
+
+  // ── Production: Vercel Blob ────────────────────────────────────────────────
+  // Vercel's filesystem is read-only at runtime; Blob gives a permanent CDN URL.
+  // Requires BLOB_READ_WRITE_TOKEN (auto-set when you link a Blob store in the
+  // Vercel dashboard: Storage → Create → Blob).
+  if (process.env.BLOB_READ_WRITE_TOKEN) {
+    const { put } = await import("@vercel/blob");
+
+    for (const file of files) {
+      const ext = file.type.split("/")[1].replace("jpeg", "jpg");
+      const blob = await put(`products/${randomUUID()}.${ext}`, file, {
+        access: "public",
+        contentType: file.type,
+      });
+      urls.push(blob.url);
+    }
+
+    return NextResponse.json({ urls });
+  }
+
+  // ── Development: local filesystem ─────────────────────────────────────────
+  // Files land in public/uploads/ and are served as /uploads/<filename>.
+  // This folder is gitignored; it only exists on your local machine.
+  const { writeFile, mkdir } = await import("fs/promises");
+  const { join } = await import("path");
+
   const uploadDir = join(process.cwd(), "public", "uploads");
   await mkdir(uploadDir, { recursive: true });
-
-  const urls: string[] = [];
 
   for (const file of files) {
     const ext = file.type.split("/")[1].replace("jpeg", "jpg");

@@ -27,7 +27,7 @@ export function PrimeFeatureCard({ product }: PrimeFeatureCardProps) {
   return (
     <Link
       href={`/phones/${product.slug}`}
-      className="group relative flex flex-col rounded-2xl overflow-hidden border border-white/[0.07] hover:border-white/[0.18] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl hover:shadow-black/70 bg-[#0e0e12] h-full min-h-[420px]"
+      className="group relative flex flex-col rounded-2xl overflow-hidden border border-white/[0.07] hover:border-white/[0.18] transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/70 bg-[#0e0e12] h-full min-h-[420px]"
     >
       {/* Full-bleed image */}
       <div className="absolute inset-0">

@@ -28,13 +28,13 @@ export function ProductCard({ product, className, priority = false }: ProductCar
     <Link
       href={`/phones/${product.slug}`}
       className={cn(
-        "group relative bg-[#0e0e12] rounded-2xl overflow-hidden border border-white/[0.07] hover:border-white/[0.16] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-black/60 flex flex-col",
+        "group relative bg-[#0e0e12] rounded-2xl overflow-hidden border border-white/[0.07] hover:border-white/[0.16] transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/60 flex flex-col",
         !product.isAvailable && "opacity-60 pointer-events-none",
         className
       )}
     >
       {/* Image */}
-      <div className="relative overflow-hidden aspect-[4/3] bg-gray-900">
+      <div className="relative overflow-hidden aspect-[4/3] bg-[#0e0e12]">
         {imgError || !product.images[0] ? (
           <div className="absolute inset-0 flex items-center justify-center bg-[#111116]">
             <Smartphone className="w-10 h-10 text-gray-800" />
@@ -51,8 +51,8 @@ export function ProductCard({ product, className, priority = false }: ProductCar
           />
         )}
 
-        {/* Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e12] via-[#0e0e12]/10 to-transparent" />
+        {/* Gradient — from-color must match bg-[#0e0e12] exactly so the seam is invisible */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e12] via-[#0e0e12]/30 to-transparent" />
 
         {/* Condition + discount — top left */}
         <div className="absolute top-3 left-3 flex flex-col gap-1.5">

@@ -41,7 +41,7 @@ export function PrimeFeatureCard({ product }: PrimeFeatureCardProps) {
             alt={product.name}
             fill
             sizes="(max-width: 1024px) 100vw, 66vw"
-            className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+            className="object-contain p-8 sm:p-12 transition-transform duration-700 group-hover:scale-[1.03]"
             priority
             onError={() => setImgError(true)}
           />

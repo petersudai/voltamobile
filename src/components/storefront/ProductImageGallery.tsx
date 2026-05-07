@@ -63,7 +63,7 @@ export function ProductImageGallery({ images, alt }: ProductImageGalleryProps) {
             alt={`${alt} — photo ${active + 1}`}
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover transition-opacity duration-300"
+            className="object-contain p-4 transition-opacity duration-300"
             priority
             onError={() => markError(active)}
           />

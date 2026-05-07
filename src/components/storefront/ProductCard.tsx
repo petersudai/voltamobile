@@ -45,7 +45,7 @@ export function ProductCard({ product, className, priority = false }: ProductCar
             alt={product.name}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+            className="object-contain p-3 transition-transform duration-500 group-hover:scale-[1.03]"
             priority={priority}
             onError={() => setImgError(true)}
           />

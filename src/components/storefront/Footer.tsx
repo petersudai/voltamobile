@@ -85,7 +85,21 @@ export function Footer() {
 
         <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-600">
           <p>© {new Date().getFullYear()} Volta Mobile. All rights reserved.</p>
-          <p>Nairobi CBD, Kenya 🇰🇪</p>
+          <div className="flex items-center gap-4">
+            <p>Nairobi CBD, Kenya 🇰🇪</p>
+            <span className="hidden sm:block text-gray-800">·</span>
+            <p>
+              Built by{" "}
+              <a
+                href="https://sudaidevfolio.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors duration-200 font-medium"
+              >
+                Peter Sudai
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>

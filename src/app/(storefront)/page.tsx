@@ -89,7 +89,7 @@ function WhyVoltaSection() {
 
   return (
     <section className="bg-[#050508] border-t border-white/[0.04]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
         <div className="mb-16 max-w-xl">
           <p className="text-blue-500 text-xs font-bold uppercase tracking-[0.2em] mb-4">
             Our Promise
@@ -103,7 +103,7 @@ function WhyVoltaSection() {
           {reasons.map((r) => (
             <div
               key={r.title}
-              className="p-8 bg-[#050508] hover:bg-[#0a0a10] transition-colors duration-300 group"
+              className="p-6 sm:p-8 bg-[#050508] hover:bg-[#0a0a10] transition-colors duration-300 group"
             >
               <div className="flex items-start justify-between mb-6">
                 <span className="text-3xl">{r.emoji}</span>

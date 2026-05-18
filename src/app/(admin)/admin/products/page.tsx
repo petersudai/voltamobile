@@ -20,10 +20,10 @@ export default async function AdminProductsPage() {
 
   return (
     <AdminLayout>
-      <div className="p-8">
-        <div className="flex items-center justify-between mb-8">
+      <div className="p-4 sm:p-8">
+        <div className="flex items-center justify-between mb-6 sm:mb-8">
           <div>
-            <h1 className="text-2xl font-black text-gray-900">Products</h1>
+            <h1 className="text-xl sm:text-2xl font-black text-gray-900">Products</h1>
             <p className="text-gray-500 text-sm mt-0.5">{products.length} devices in stock</p>
           </div>
           <Link

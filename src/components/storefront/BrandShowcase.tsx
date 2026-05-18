@@ -119,7 +119,7 @@ export function BrandShowcase() {
           <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
             Premium Brands, Verified Stock
           </h2>
-          <p className="mt-3 text-gray-400 text-lg max-w-xl mx-auto">
+          <p className="mt-3 text-gray-400 text-base sm:text-lg max-w-xl mx-auto">
             We stock only the most sought-after devices — sourced directly from the UK.
           </p>
         </div>

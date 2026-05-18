@@ -24,7 +24,7 @@ export default async function EditProductPage({ params }: Props) {
 
   return (
     <AdminLayout>
-      <div className="p-8">
+      <div className="p-4 sm:p-8">
         <Link
           href="/admin/products"
           className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-900 mb-6 transition-colors"

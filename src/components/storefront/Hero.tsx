@@ -145,7 +145,7 @@ export function Hero({ heroImageUrl, heroProduct }: HeroProps) {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.6 }}
-                className="absolute -right-4 sm:-right-8 lg:-right-10 top-14 bg-white rounded-2xl shadow-xl px-3 py-2.5 sm:px-4 sm:py-3 flex items-center gap-2.5 border border-gray-100"
+                className="absolute -right-4 sm:-right-8 lg:-right-10 top-14 bg-white rounded-2xl shadow-xl px-3 py-2.5 sm:px-4 sm:py-3 hidden sm:flex items-center gap-2.5 border border-gray-100"
               >
                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-emerald-100 flex items-center justify-center flex-shrink-0">
                   <span className="text-base sm:text-lg">🔋</span>
@@ -163,7 +163,7 @@ export function Hero({ heroImageUrl, heroProduct }: HeroProps) {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.75 }}
-                className="absolute -left-4 sm:-left-8 lg:-left-10 bottom-20 sm:bottom-24 bg-white rounded-2xl shadow-xl px-3 py-2.5 sm:px-4 sm:py-3 border border-gray-100 max-w-[145px] sm:max-w-[170px]"
+                className="absolute -left-4 sm:-left-8 lg:-left-10 bottom-20 sm:bottom-24 bg-white rounded-2xl shadow-xl px-3 py-2.5 sm:px-4 sm:py-3 border border-gray-100 max-w-[145px] sm:max-w-[170px] hidden sm:block"
               >
                 <p className="text-xs text-gray-500 line-clamp-1">{priceBadge.label}</p>
                 <p className="text-sm font-bold text-gray-900 mt-0.5">{priceBadge.price}</p>

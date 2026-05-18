@@ -138,7 +138,7 @@ export function Footer() {
             <div className="flex items-center gap-4">
               <p>Nairobi CBD, Kenya 🇰🇪</p>
               <span className="hidden sm:block text-gray-800">·</span>
-              <div className="flex flex-col items-end gap-0.5">
+              <div className="flex flex-col items-center sm:items-end gap-0.5">
                 <p>
                   Built by{" "}
                   <a

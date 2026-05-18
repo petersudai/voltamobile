@@ -48,7 +48,8 @@ export function ProductsTable({ products }: ProductsTableProps) {
 
       {/* Table */}
       <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
-        <table className="w-full text-sm">
+        <div className="overflow-x-auto">
+        <table className="w-full text-sm min-w-[480px]">
           <thead>
             <tr className="border-b border-gray-100 text-left">
               <th className="px-4 py-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">
@@ -166,6 +167,7 @@ export function ProductsTable({ products }: ProductsTableProps) {
             ))}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   );

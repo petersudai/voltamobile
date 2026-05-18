@@ -83,7 +83,7 @@ function WhyVoltaSection() {
       num: "06",
       emoji: "🤝",
       title: "After-Sales Support",
-      body: "WhatsApp us any time after purchase. Every device we sell is backed by our 7-day concern policy.",
+      body: "WhatsApp us any time after purchase. Every device we sell is backed by our 7-Day Exchange Guarantee.",
     },
   ];
 

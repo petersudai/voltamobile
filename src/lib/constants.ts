@@ -1,4 +1,4 @@
-export const WHATSAPP_NUMBER = "+254700000000";
+export const WHATSAPP_NUMBER = "+254708004281";
 export const STORE_NAME = "Volta Mobile";
 export const STORE_TAGLINE = "Powered by Trust.";
 export const STORE_ADDRESS = "Nairobi CBD, Moi Avenue, Ground Floor";

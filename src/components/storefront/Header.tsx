@@ -116,7 +116,7 @@ export function Header() {
                 <Search style={{ width: "18px", height: "18px" }} />
               </button>
               <a
-                href={whatsappUrl(WHATSAPP_NUMBER, "Hi! I'd like to know more about your phones.")}
+                href={whatsappUrl(WHATSAPP_NUMBER, "Hi, I saw the Volta Mobile demo site and I'd like to discuss building something similar for my shop.")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hidden md:flex items-center gap-2 px-4 py-2 rounded-xl bg-[#25D366] hover:bg-[#22c55e] text-white text-sm font-semibold transition-all shadow-lg shadow-green-900/20"
@@ -213,7 +213,7 @@ export function Header() {
                   className="mt-3 pt-3 border-t border-white/[0.05]"
                 >
                   <a
-                    href={whatsappUrl(WHATSAPP_NUMBER, "Hi! I'd like to know more about your phones.")}
+                    href={whatsappUrl(WHATSAPP_NUMBER, "Hi, I saw the Volta Mobile demo site and I'd like to discuss building something similar for my shop.")}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={closeMenu}

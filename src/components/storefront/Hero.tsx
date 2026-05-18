@@ -10,8 +10,8 @@ import { formatKES } from "@/lib/format";
 import type { Product } from "@/types";
 
 const stats = [
-  { value: "500+", label: "Phones Sold" },
-  { value: "4.9★", label: "Customer Rating" },
+  { value: "250+", label: "Phones Sold" },
+  { value: "4.8★", label: "Customer Rating" },
   { value: "3hrs", label: "Avg. Delivery" },
 ];
 
@@ -96,7 +96,7 @@ export function Hero({ heroImageUrl, heroProduct }: HeroProps) {
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <a
-                  href={whatsappUrl(WHATSAPP_NUMBER, "Hi! I'd like to check your current stock.")}
+                  href={whatsappUrl(WHATSAPP_NUMBER, "Hi, I saw the Volta Mobile demo site and I'd like to discuss building something similar for my shop.")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-white font-semibold text-base transition-all"

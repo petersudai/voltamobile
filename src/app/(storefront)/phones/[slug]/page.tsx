@@ -180,7 +180,7 @@ export default async function ProductDetailPage({ params }: Props) {
                 { icon: "🏪", label: "Physical store", sub: "Inspect in person" },
                 { icon: "🔋", label: "Battery certified", sub: "Health tested & shown" },
                 { icon: "🇬🇧", label: "Genuine Ex-UK", sub: "Not a Chinese replica" },
-                { icon: "🤝", label: "7-day concern policy", sub: "We stand behind it" },
+                { icon: "🤝", label: "7-Day Exchange Guarantee", sub: "We stand behind it" },
               ].map((t) => (
                 <div key={t.label} className="flex items-start gap-2.5 p-3 bg-white/[0.03] border border-white/[0.06] rounded-xl">
                   <span className="text-xl flex-shrink-0">{t.icon}</span>

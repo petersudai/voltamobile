@@ -83,22 +83,86 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-600">
-          <p>© {new Date().getFullYear()} Volta Mobile. All rights reserved.</p>
-          <div className="flex items-center gap-4">
-            <p>Nairobi CBD, Kenya 🇰🇪</p>
-            <span className="hidden sm:block text-gray-800">·</span>
-            <p>
-              Built by{" "}
-              <a
-                href="https://sudaidevfolio.vercel.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors duration-200 font-medium"
-              >
-                Peter Sudai
-              </a>
-            </p>
+        {/* ── Map widget ─────────────────────────────────────────────────── */}
+        <div className="mt-12 rounded-2xl overflow-hidden border border-gray-800 relative shadow-2xl shadow-black/40">
+          {/* Map iframe */}
+          <iframe
+            title="Volta Mobile — Store Location"
+            src="https://maps.google.com/maps?q=Moi+Avenue,+Nairobi+CBD,+Kenya&t=&z=17&ie=UTF8&iwloc=&output=embed"
+            width="100%"
+            height="240"
+            style={{ border: 0, display: "block", filter: "grayscale(0.25) contrast(1.05) brightness(0.92)" }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+
+          {/* Gradient vignette — blends map into dark footer */}
+          <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-gray-950/60 to-transparent pointer-events-none" />
+
+          {/* Store info card — overlaid at the bottom */}
+          <div className="absolute bottom-3 left-3 right-3 z-10 bg-gray-900/90 backdrop-blur-md rounded-xl border border-white/[0.07] px-4 py-3 flex items-center gap-3">
+            {/* Pin icon */}
+            <div className="w-8 h-8 flex-shrink-0 rounded-lg bg-blue-600/20 border border-blue-500/20 flex items-center justify-center">
+              <MapPin className="w-4 h-4 text-blue-400" />
+            </div>
+
+            {/* Address + hours */}
+            <div className="flex-1 min-w-0">
+              <p className="text-white text-sm font-semibold leading-tight">Volta Mobile</p>
+              <p className="text-gray-400 text-xs truncate mt-0.5">{STORE_ADDRESS}</p>
+              <p className="text-gray-500 text-[11px] mt-0.5 flex items-center gap-1">
+                <Clock className="w-3 h-3 flex-shrink-0" />
+                {STORE_HOURS}
+              </p>
+            </div>
+
+            {/* Directions CTA */}
+            <a
+              href="https://maps.google.com/?q=Moi+Avenue,+Nairobi+CBD,+Kenya"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-shrink-0 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition-colors whitespace-nowrap"
+            >
+              Get Directions
+            </a>
+          </div>
+        </div>
+
+        <div className="mt-8 pt-8 border-t border-gray-800 space-y-4 text-xs text-gray-600">
+          <p className="text-center text-gray-700 leading-relaxed max-w-2xl mx-auto">
+            This is a demo site built to showcase what your phone shop could look like online. All products, prices, and contact details are for illustration purposes only.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>© {new Date().getFullYear()} Volta Mobile. All rights reserved.</p>
+            <div className="flex items-center gap-4">
+              <p>Nairobi CBD, Kenya 🇰🇪</p>
+              <span className="hidden sm:block text-gray-800">·</span>
+              <div className="flex flex-col items-end gap-0.5">
+                <p>
+                  Built by{" "}
+                  <a
+                    href="https://sudaidevfolio.vercel.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-white transition-colors duration-200 font-medium"
+                  >
+                    Peter Sudai
+                  </a>
+                </p>
+                <p className="text-gray-600">
+                  Want a site like this for your shop?{" "}
+                  <a
+                    href="https://sudaidevfolio.vercel.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-white transition-colors duration-200 font-medium"
+                  >
+                    Let&apos;s talk.
+                  </a>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

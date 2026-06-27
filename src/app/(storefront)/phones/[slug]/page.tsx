@@ -44,8 +44,30 @@ export default async function ProductDetailPage({ params }: Props) {
   const discountPct = hasDiscount ? discount(p.marketPriceKES!, p.priceKES) : 0;
   const showBattery = p.batteryHealth && ["EX_UK", "REFURBISHED", "USED"].includes(p.condition);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: p.name,
+    brand: { "@type": "Brand", name: p.brand.name },
+    ...(p.description ? { description: p.description } : {}),
+    image: p.images,
+    offers: {
+      "@type": "Offer",
+      price: p.priceKES,
+      priceCurrency: "KES",
+      availability: p.isAvailable
+        ? "https://schema.org/InStock"
+        : "https://schema.org/OutOfStock",
+      seller: { "@type": "Organization", name: "Volta Mobile" },
+    },
+  };
+
   return (
     <div className="min-h-screen bg-[#09090c] pt-20 pb-24 sm:pb-0">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Breadcrumbs */}
       <div className="border-b border-white/[0.06]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">

@@ -36,7 +36,7 @@ export function ProductCard({ product, className, priority = false, compactImage
       )}
     >
       {/* Image */}
-      <div className={cn("relative overflow-hidden bg-surface bg-[radial-gradient(ellipse_at_50%_45%,rgba(37,99,235,0.28),transparent_68%)]", compactImage ? "aspect-[16/10]" : "aspect-[4/3]")}>
+      <div className={cn("relative overflow-hidden bg-surface bg-[radial-gradient(ellipse_at_50%_45%,rgba(37,99,235,0.28),transparent_68%)]", compactImage ? "aspect-[16/10]" : "aspect-square sm:aspect-[4/3]")}>
         {imgError || !product.images[0] ? (
           <div className="absolute inset-0 flex items-center justify-center bg-surface-2">
             <Smartphone className="w-10 h-10 text-ink-3" />
@@ -47,7 +47,7 @@ export function ProductCard({ product, className, priority = false, compactImage
             alt={product.name}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-contain p-3 transition-transform duration-500 group-hover:scale-[1.03]"
+            className="object-contain p-3 pt-9 sm:pt-3 transition-transform duration-500 group-hover:scale-[1.03]"
             priority={priority}
             onError={() => setImgError(true)}
           />
@@ -57,7 +57,7 @@ export function ProductCard({ product, className, priority = false, compactImage
         <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/30 to-transparent" />
 
         {/* Condition + discount — top left */}
-        <div className="absolute top-3 left-3 flex flex-col gap-1.5">
+        <div className="absolute top-2 left-2 sm:top-3 sm:left-3 right-2 flex flex-wrap items-center gap-1 sm:flex-col sm:items-start sm:gap-1.5 sm:right-auto">
           <ConditionBadge condition={product.condition} />
           {discountPct > 0 && (
             <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-black bg-red-500/90 text-white backdrop-blur-sm">
@@ -68,7 +68,7 @@ export function ProductCard({ product, className, priority = false, compactImage
 
         {/* Battery — bottom left */}
         {showBattery && (
-          <div className="absolute bottom-3 left-3">
+          <div className="absolute bottom-2 left-2 sm:bottom-3 sm:left-3">
             <BatteryBadge health={product.batteryHealth!} size="sm" />
           </div>
         )}
@@ -118,7 +118,7 @@ export function ProductCard({ product, className, priority = false, compactImage
         </div>
 
         {/* Price */}
-        <div className="mt-auto flex items-end justify-between gap-1 sm:gap-2">
+        <div className="mt-auto flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between sm:gap-2">
           <div>
             <p className="text-base sm:text-lg font-black text-price leading-none tabular">
               {formatKES(product.priceKES)}
@@ -128,7 +128,7 @@ export function ProductCard({ product, className, priority = false, compactImage
             )}
           </div>
           {hasDiscount && (
-            <p className="text-[11px] sm:text-xs text-ink-3 line-through pb-0.5">
+            <p className="text-[11px] sm:text-xs text-ink-3 line-through whitespace-nowrap sm:pb-0.5">
               {formatKES(product.marketPriceKES!)}
             </p>
           )}

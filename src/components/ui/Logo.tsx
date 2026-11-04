@@ -4,7 +4,8 @@ import { cn } from "@/lib/utils";
 interface LogoProps {
   className?: string;
   size?: "sm" | "md" | "lg";
-  variant?: "dark" | "light";
+  /** "auto" follows the storefront theme; "dark"/"light" are fixed (admin). */
+  variant?: "dark" | "light" | "auto";
 }
 
 export function Logo({ className, size = "md", variant = "dark" }: LogoProps) {
@@ -32,11 +33,11 @@ export function Logo({ className, size = "md", variant = "dark" }: LogoProps) {
         className={cn(
           "font-bold tracking-tight",
           textSizes[size],
-          variant === "dark" ? "text-gray-900" : "text-white"
+          variant === "auto" ? "text-ink" : variant === "dark" ? "text-gray-900" : "text-white"
         )}
       >
         volta
-        <span className={variant === "dark" ? "text-blue-600" : "text-blue-400"}>
+        <span className={variant === "auto" ? "text-link" : variant === "dark" ? "text-blue-600" : "text-blue-400"}>
           mobile
         </span>
       </span>

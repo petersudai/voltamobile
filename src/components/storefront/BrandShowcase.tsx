@@ -109,19 +109,17 @@ const brands = [
 
 export function BrandShowcase() {
   return (
-    <section className="relative overflow-hidden py-20 sm:py-24 bg-[#0a0a0f] border-t border-white/5">
+    <section className="relative overflow-hidden py-20 sm:py-24 bg-page border-t border-line">
       <div className="pointer-events-none absolute inset-0" aria-hidden>
         <div className="absolute left-1/2 top-0 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse,rgba(37,99,235,0.16),transparent_65%)]" />
       </div>
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white">
-            <span className="bg-gradient-to-r from-amber-300 via-emerald-300 to-cyan-300 bg-clip-text text-transparent">
-              iPhone
-            </span>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-ink">
+            <span className="text-gradient">iPhone</span>
             , Samsung and Pixel
           </h2>
-          <p className="mt-3 text-gray-400 text-base sm:text-lg max-w-xl mx-auto">
+          <p className="mt-3 text-ink-3 text-base sm:text-lg max-w-xl mx-auto">
             Imported from the UK and checked in the shop before it is listed.
           </p>
         </div>

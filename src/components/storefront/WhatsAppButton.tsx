@@ -43,7 +43,7 @@ export function WhatsAppButton({
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        "inline-flex items-center justify-center gap-2 font-semibold rounded-xl bg-[#25D366] hover:bg-[#1ebe5d] text-white transition-all duration-150 active:scale-95 shadow-sm",
+        "inline-flex items-center justify-center gap-2 font-semibold rounded-xl bg-[#25D366] hover:bg-[#1ebe5d] text-gray-950 transition-all duration-150 active:scale-95 shadow-sm",
         sizes[size],
         fullWidth && "w-full",
         className

@@ -21,7 +21,7 @@ export async function FeaturedProducts() {
   const [hero, ...rest] = products as unknown as Product[];
 
   return (
-    <section className="relative overflow-hidden py-16 sm:py-24 bg-[#08080c] border-t border-white/5">
+    <section className="relative overflow-hidden py-16 sm:py-24 bg-page border-t border-line">
       <div className="pointer-events-none absolute inset-0" aria-hidden>
         <div className="absolute -top-32 left-1/2 h-[480px] w-[900px] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse,rgba(37,99,235,0.22),transparent_65%)]" />
         <div className="absolute bottom-[-200px] right-[-10%] h-[460px] w-[460px] rounded-full bg-[radial-gradient(circle,rgba(250,204,21,0.1),transparent_65%)]" />
@@ -29,15 +29,15 @@ export async function FeaturedProducts() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="flex items-end justify-between mb-8 sm:mb-12">
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white leading-tight">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-ink leading-tight">
             In stock{" "}
-            <span className="bg-gradient-to-r from-amber-300 via-emerald-300 to-cyan-300 bg-clip-text text-transparent">
+            <span className="text-gradient">
               this week
             </span>
           </h2>
           <Link
             href="/phones"
-            className="hidden sm:flex items-center gap-2 py-2 text-sm font-semibold text-gray-400 hover:text-white transition-colors"
+            className="hidden sm:flex items-center gap-2 py-2 text-sm font-semibold text-ink-3 hover:text-ink transition-colors"
           >
             View all
             <ArrowRight className="w-4 h-4" />
@@ -69,7 +69,7 @@ export async function FeaturedProducts() {
         <div className="mt-8 text-center sm:hidden">
           <Link
             href="/phones"
-            className="inline-flex items-center gap-2 py-2 text-sm font-semibold text-blue-400"
+            className="inline-flex items-center gap-2 py-2 text-sm font-semibold text-link"
           >
             View all phones <ArrowRight className="w-4 h-4" />
           </Link>

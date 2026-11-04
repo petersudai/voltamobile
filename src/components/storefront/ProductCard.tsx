@@ -30,16 +30,16 @@ export function ProductCard({ product, className, priority = false, compactImage
     <Link
       href={`/phones/${product.slug}`}
       className={cn(
-        "group relative bg-[#0e0e12] rounded-2xl overflow-hidden border border-white/[0.07] hover:border-blue-400/40 transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_-20px_rgba(37,99,235,0.5)] flex flex-col",
+        "group relative bg-surface rounded-2xl overflow-hidden border border-line hover:border-blue-400/40 transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_-20px_rgba(37,99,235,0.5)] flex flex-col",
         !product.isAvailable && "opacity-60 pointer-events-none",
         className
       )}
     >
       {/* Image */}
-      <div className={cn("relative overflow-hidden bg-[#0e0e12] bg-[radial-gradient(ellipse_at_50%_45%,rgba(37,99,235,0.28),transparent_68%)]", compactImage ? "aspect-[16/10]" : "aspect-[4/3]")}>
+      <div className={cn("relative overflow-hidden bg-surface bg-[radial-gradient(ellipse_at_50%_45%,rgba(37,99,235,0.28),transparent_68%)]", compactImage ? "aspect-[16/10]" : "aspect-[4/3]")}>
         {imgError || !product.images[0] ? (
-          <div className="absolute inset-0 flex items-center justify-center bg-[#111116]">
-            <Smartphone className="w-10 h-10 text-gray-800" />
+          <div className="absolute inset-0 flex items-center justify-center bg-surface-2">
+            <Smartphone className="w-10 h-10 text-ink-3" />
           </div>
         ) : (
           <Image
@@ -53,8 +53,8 @@ export function ProductCard({ product, className, priority = false, compactImage
           />
         )}
 
-        {/* Gradient — from-color must match bg-[#0e0e12] exactly so the seam is invisible */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e12] via-[#0e0e12]/30 to-transparent" />
+        {/* Gradient — from-color must match bg-surface exactly so the seam is invisible */}
+        <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/30 to-transparent" />
 
         {/* Condition + discount — top left */}
         <div className="absolute top-3 left-3 flex flex-col gap-1.5">
@@ -75,15 +75,15 @@ export function ProductCard({ product, className, priority = false, compactImage
 
         {/* View arrow — bottom right, reveals on hover */}
         <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-200 translate-y-1 group-hover:translate-y-0">
-          <div className="bg-white/10 backdrop-blur-sm border border-white/15 rounded-full p-1.5">
-            <ArrowUpRight className="w-3.5 h-3.5 text-white" />
+          <div className="bg-ink/10 backdrop-blur-sm border border-line rounded-full p-1.5">
+            <ArrowUpRight className="w-3.5 h-3.5 text-ink" />
           </div>
         </div>
 
         {/* Sold-out overlay */}
         {!product.isAvailable && (
-          <div className="absolute inset-0 bg-[#0e0e12]/80 flex items-center justify-center backdrop-blur-[2px]">
-            <span className="border border-white/15 text-white/60 font-semibold text-xs px-4 py-1.5 rounded-full">
+          <div className="absolute inset-0 bg-surface/80 flex items-center justify-center backdrop-blur-[2px]">
+            <span className="border border-line text-ink-3 font-semibold text-xs px-4 py-1.5 rounded-full">
               Sold Out
             </span>
           </div>
@@ -94,24 +94,24 @@ export function ProductCard({ product, className, priority = false, compactImage
       <div className="p-3 sm:p-4 flex flex-col flex-1 gap-2 sm:gap-3">
         {/* Brand + name */}
         <div>
-          <p className="text-[10px] font-bold text-gray-600 uppercase tracking-[0.18em] mb-0.5 sm:mb-1">
+          <p className="text-[11px] font-bold text-ink-3 uppercase tracking-[0.16em] mb-0.5 sm:mb-1">
             {product.brand.name}
           </p>
-          <h3 className="text-white/85 font-semibold text-[13px] sm:text-sm leading-snug line-clamp-2 group-hover:text-white transition-colors duration-200">
+          <h3 className="text-ink font-bold text-sm sm:text-[15px] leading-snug line-clamp-2 group-hover:text-ink transition-colors duration-200">
             {product.name}
           </h3>
         </div>
 
         {/* Spec chips — hide RAM on smallest screens to save space */}
         <div className="flex items-center gap-1 sm:gap-1.5 flex-wrap">
-          <span className="text-[10px] sm:text-[11px] text-gray-600 bg-white/[0.04] border border-white/[0.05] px-1.5 sm:px-2 py-0.5 rounded-md">
+          <span className="text-[11px] sm:text-xs text-ink-2 bg-ink/[0.04] border border-line px-1.5 sm:px-2 py-0.5 rounded-md">
             {product.storageCapacity}
           </span>
-          <span className="text-[10px] sm:text-[11px] text-gray-600 bg-white/[0.04] border border-white/[0.05] px-1.5 sm:px-2 py-0.5 rounded-md">
+          <span className="text-[11px] sm:text-xs text-ink-2 bg-ink/[0.04] border border-line px-1.5 sm:px-2 py-0.5 rounded-md">
             {product.color}
           </span>
           {product.ram && (
-            <span className="hidden sm:inline-flex text-[11px] text-gray-600 bg-white/[0.04] border border-white/[0.05] px-2 py-0.5 rounded-md">
+            <span className="hidden sm:inline-flex text-xs text-ink-2 bg-ink/[0.04] border border-line px-2 py-0.5 rounded-md">
               {product.ram}
             </span>
           )}
@@ -120,15 +120,15 @@ export function ProductCard({ product, className, priority = false, compactImage
         {/* Price */}
         <div className="mt-auto flex items-end justify-between gap-1 sm:gap-2">
           <div>
-            <p className="text-base sm:text-lg font-black text-amber-400 leading-none tabular">
+            <p className="text-base sm:text-lg font-black text-price leading-none tabular">
               {formatKES(product.priceKES)}
             </p>
             {product.priceUSD && (
-              <p className="hidden sm:block text-[11px] text-gray-600 mt-1">{formatUSD(product.priceUSD)}</p>
+              <p className="hidden sm:block text-[11px] text-ink-3 mt-1">{formatUSD(product.priceUSD)}</p>
             )}
           </div>
           {hasDiscount && (
-            <p className="text-[10px] sm:text-xs text-gray-700 line-through pb-0.5">
+            <p className="text-[11px] sm:text-xs text-ink-3 line-through pb-0.5">
               {formatKES(product.marketPriceKES!)}
             </p>
           )}

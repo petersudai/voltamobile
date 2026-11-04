@@ -1,9 +1,61 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Theme tokens. Light is the default; the `dark` class on <html> swaps them.
+   Text tokens are chosen for WCAG AA on their intended surface:
+   ink-3 (the weakest text) is >= 6.5:1 on page and card surfaces in both themes. */
+:root {
+  color-scheme: light;
+  --page: #f5f7fb;
+  --surface: #ffffff;
+  --surface-2: #e9edf5;
+  --ink: #0b1020;
+  --ink-2: #2d3550;
+  --ink-3: #4a546c;
+  --line: rgba(11, 16, 32, 0.12);
+  --line-strong: rgba(11, 16, 32, 0.28);
+  --price: #b45309;
+  --good: #047857;
+  --link: #1d4ed8;
+  --grid-line: rgba(11, 16, 32, 0.06);
+  --g1: #1d4ed8;
+  --g2: #0e7490;
+  --g3: #047857;
+}
+
+.dark {
+  color-scheme: dark;
+  --page: #09090c;
+  --surface: #0f1015;
+  --surface-2: #1c1e29;
+  --ink: #f6f7fb;
+  --ink-2: #d9dde8;
+  --ink-3: #aab1c3;
+  --line: rgba(255, 255, 255, 0.13);
+  --line-strong: rgba(255, 255, 255, 0.28);
+  --price: #fbbf24;
+  --good: #34d399;
+  --link: #7db3ff;
+  --grid-line: rgba(255, 255, 255, 0.045);
+  --g1: #fcd34d;
+  --g2: #6ee7b7;
+  --g3: #67e8f9;
+}
+
 @theme inline {
   --font-sans: var(--font-body);
-  --color-background: #09090c;
-  --color-foreground: #f4f4f5;
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-price: var(--price);
+  --color-good: var(--good);
+  --color-link: var(--link);
 }
 
 html {
@@ -11,8 +63,8 @@ html {
 }
 
 body {
-  background: var(--color-background);
-  color: var(--color-foreground);
+  background: var(--page);
+  color: var(--ink);
 }
 
 h1, h2, h3 {
@@ -22,4 +74,11 @@ h1, h2, h3 {
 
 .tabular {
   font-variant-numeric: tabular-nums;
+}
+
+.text-gradient {
+  background-image: linear-gradient(90deg, var(--g1), var(--g2), var(--g3));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }

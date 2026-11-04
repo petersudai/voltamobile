@@ -48,14 +48,14 @@ export function ProductImageGallery({ images, alt }: ProductImageGalleryProps) {
     <div className="flex flex-col gap-3">
       {/* Main image */}
       <div
-        className="relative rounded-2xl overflow-hidden bg-[#111116] aspect-square border border-white/[0.07] touch-pan-y select-none"
+        className="relative rounded-2xl overflow-hidden bg-surface-2 aspect-square border border-line touch-pan-y select-none"
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
       >
         {errors[active] ? (
-          <div className="absolute inset-0 flex items-center justify-center bg-[#111116]">
-            <Smartphone className="w-16 h-16 text-gray-800" />
+          <div className="absolute inset-0 flex items-center justify-center bg-surface-2">
+            <Smartphone className="w-16 h-16 text-ink-3" />
           </div>
         ) : (
           <Image
@@ -74,14 +74,14 @@ export function ProductImageGallery({ images, alt }: ProductImageGalleryProps) {
           <>
             <button
               onClick={prev}
-              className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 hover:bg-black/70 border border-white/10 backdrop-blur-sm shadow-lg transition-all active:scale-95"
+              className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 hover:bg-black/70 border border-line backdrop-blur-sm shadow-lg transition-all active:scale-95"
               aria-label="Previous photo"
             >
               <ChevronLeft className="w-4 h-4 text-white/80" />
             </button>
             <button
               onClick={next}
-              className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 hover:bg-black/70 border border-white/10 backdrop-blur-sm shadow-lg transition-all active:scale-95"
+              className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 hover:bg-black/70 border border-line backdrop-blur-sm shadow-lg transition-all active:scale-95"
               aria-label="Next photo"
             >
               <ChevronRight className="w-4 h-4 text-white/80" />
@@ -90,7 +90,7 @@ export function ProductImageGallery({ images, alt }: ProductImageGalleryProps) {
         )}
 
         {/* Counter */}
-        <div className="absolute bottom-3 right-3 bg-black/60 backdrop-blur-sm text-white/70 text-xs px-2.5 py-1 rounded-full border border-white/10">
+        <div className="absolute bottom-3 right-3 bg-black/60 backdrop-blur-sm text-white/90 text-xs px-2.5 py-1 rounded-full border border-white/20">
           {active + 1} / {images.length}
         </div>
 
@@ -105,7 +105,7 @@ export function ProductImageGallery({ images, alt }: ProductImageGalleryProps) {
                   "rounded-full transition-all duration-200",
                   i === active
                     ? "w-4 h-1.5 bg-white"
-                    : "w-1.5 h-1.5 bg-white/40 hover:bg-white/60"
+                    : "w-1.5 h-1.5 bg-white/50 hover:bg-white/80"
                 )}
                 aria-label={`Go to photo ${i + 1}`}
               />
@@ -125,12 +125,12 @@ export function ProductImageGallery({ images, alt }: ProductImageGalleryProps) {
                 "flex-shrink-0 relative w-14 h-14 sm:w-16 sm:h-16 rounded-xl overflow-hidden border-2 transition-all active:scale-95",
                 i === active
                   ? "border-amber-400/70 opacity-100"
-                  : "border-white/[0.08] opacity-50 hover:opacity-75 hover:border-white/20"
+                  : "border-line opacity-50 hover:opacity-75 hover:border-line-strong"
               )}
             >
               {errors[i] ? (
-                <div className="absolute inset-0 flex items-center justify-center bg-[#111116]">
-                  <Smartphone className="w-5 h-5 text-gray-700" />
+                <div className="absolute inset-0 flex items-center justify-center bg-surface-2">
+                  <Smartphone className="w-5 h-5 text-ink-3" />
                 </div>
               ) : (
                 <Image

@@ -27,9 +27,16 @@ export const metadata: Metadata = {
   },
 };
 
+// Light is the default; dark applies only if the visitor chose it with the toggle.
+const THEME_SCRIPT = `(function(){try{if(localStorage.getItem("theme")==="dark")document.documentElement.classList.add("dark")}catch(e){}})()`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${archivo.variable} ${publicSans.variable} h-full`} suppressHydrationWarning>
+      <head>
+        {/* Sets the theme before first paint so there is no light/dark flash. */}
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+      </head>
       <body className="min-h-full antialiased font-sans">{children}</body>
     </html>
   );

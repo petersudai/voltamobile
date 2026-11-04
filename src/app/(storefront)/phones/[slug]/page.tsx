@@ -63,24 +63,24 @@ export default async function ProductDetailPage({ params }: Props) {
   };
 
   return (
-    <div className="min-h-screen bg-[#09090c] pt-20 pb-24 sm:pb-0">
+    <div className="min-h-screen bg-page pt-20 pb-24 sm:pb-0">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       {/* Breadcrumbs */}
-      <div className="border-b border-white/[0.06]">
+      <div className="border-b border-line">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-          <nav className="flex items-center gap-1.5 text-sm text-gray-600">
-            <Link href="/" className="hover:text-gray-300 transition-colors">Home</Link>
-            <ChevronRight className="w-3.5 h-3.5 text-gray-700" />
-            <Link href="/phones" className="hover:text-gray-300 transition-colors">Phones</Link>
-            <ChevronRight className="w-3.5 h-3.5 text-gray-700" />
-            <Link href={`/phones?brand=${p.brand.slug}`} className="hover:text-gray-300 transition-colors">
+          <nav className="flex items-center gap-1.5 text-sm text-ink-3">
+            <Link href="/" className="hover:text-ink-2 transition-colors">Home</Link>
+            <ChevronRight className="w-3.5 h-3.5 text-ink-3" />
+            <Link href="/phones" className="hover:text-ink-2 transition-colors">Phones</Link>
+            <ChevronRight className="w-3.5 h-3.5 text-ink-3" />
+            <Link href={`/phones?brand=${p.brand.slug}`} className="hover:text-ink-2 transition-colors">
               {p.brand.name}
             </Link>
-            <ChevronRight className="w-3.5 h-3.5 text-gray-700" />
-            <span className="text-gray-400 font-medium truncate max-w-48">{p.name}</span>
+            <ChevronRight className="w-3.5 h-3.5 text-ink-3" />
+            <span className="text-ink-3 font-medium truncate max-w-48">{p.name}</span>
           </nav>
         </div>
       </div>
@@ -105,10 +105,10 @@ export default async function ProductDetailPage({ params }: Props) {
                   </span>
                 )}
               </div>
-              <p className="text-xs font-bold text-gray-400 uppercase tracking-[0.18em] mb-1">
+              <p className="text-xs font-bold text-ink-3 uppercase tracking-[0.18em] mb-1">
                 {p.brand.name}
               </p>
-              <h1 className="text-2xl sm:text-3xl font-black text-white leading-tight">
+              <h1 className="text-2xl sm:text-3xl font-black text-ink leading-tight">
                 {p.name}
               </h1>
             </div>
@@ -125,7 +125,7 @@ export default async function ProductDetailPage({ params }: Props) {
                 .map((spec) => (
                   <span
                     key={spec}
-                    className="px-3 py-1.5 rounded-full bg-white/[0.05] border border-white/[0.08] text-gray-400 text-sm font-medium"
+                    className="px-3 py-1.5 rounded-full bg-ink/[0.05] border border-line text-ink-3 text-sm font-medium"
                   >
                     {spec}
                   </span>
@@ -133,29 +133,29 @@ export default async function ProductDetailPage({ params }: Props) {
             </div>
 
             {/* Price block */}
-            <div className="bg-white/[0.03] rounded-2xl border border-white/[0.08] p-5">
+            <div className="bg-ink/[0.03] rounded-2xl border border-line p-5">
               <div className="flex items-baseline gap-3 flex-wrap">
-                <span className="text-3xl font-black text-amber-400 leading-none tabular">
+                <span className="text-3xl font-black text-price leading-none tabular">
                   {formatKES(p.priceKES)}
                 </span>
                 {p.priceUSD && (
-                  <span className="text-lg text-gray-400 font-medium">
+                  <span className="text-lg text-ink-3 font-medium">
                     {formatUSD(p.priceUSD)}
                   </span>
                 )}
               </div>
               {hasDiscount && (
                 <div className="mt-2 flex items-center gap-2 flex-wrap">
-                  <span className="text-sm text-gray-400 line-through">
+                  <span className="text-sm text-ink-3 line-through">
                     Market: {formatKES(p.marketPriceKES!)}
                   </span>
-                  <span className="text-sm font-semibold text-emerald-400">
+                  <span className="text-sm font-semibold text-good">
                     You save {formatKES(p.marketPriceKES! - p.priceKES)}
                   </span>
                 </div>
               )}
               {p.marketPriceUSD && (
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-ink-3 mt-1">
                   Market USD: {formatUSD(p.marketPriceUSD)}
                 </p>
               )}
@@ -173,7 +173,7 @@ export default async function ProductDetailPage({ params }: Props) {
                   fullWidth
                 />
               </div>
-              <div className="flex items-center gap-3 sm:gap-4 text-xs text-gray-400 justify-center flex-wrap">
+              <div className="flex items-center gap-3 sm:gap-4 text-xs text-ink-3 justify-center flex-wrap">
                 <span className="flex items-center gap-1">
                   <MapPin className="w-3.5 h-3.5" /> Nairobi CBD
                 </span>
@@ -188,27 +188,27 @@ export default async function ProductDetailPage({ params }: Props) {
 
             {/* Description */}
             {p.description && (
-              <div className="border-t border-white/[0.06] pt-5">
-                <h2 className="font-bold text-white mb-3">Device Notes</h2>
-                <div className="text-sm text-gray-300 leading-relaxed whitespace-pre-wrap">
+              <div className="border-t border-line pt-5">
+                <h2 className="font-bold text-ink mb-3">Device Notes</h2>
+                <div className="text-sm text-ink-2 leading-relaxed whitespace-pre-wrap">
                   {p.description}
                 </div>
               </div>
             )}
 
             {/* Trust signals */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 border-t border-white/[0.06] pt-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 border-t border-line pt-5">
               {[
                 { icon: "🏪", label: "Physical store", sub: "Inspect in person" },
                 { icon: "🔋", label: "Battery certified", sub: "Health tested & shown" },
                 { icon: "🇬🇧", label: "Genuine Ex-UK", sub: "Not a Chinese replica" },
                 { icon: "🤝", label: "7-Day Exchange Guarantee", sub: "We stand behind it" },
               ].map((t) => (
-                <div key={t.label} className="flex items-start gap-2.5 p-3 bg-white/[0.03] border border-white/[0.06] rounded-xl">
+                <div key={t.label} className="flex items-start gap-2.5 p-3 bg-ink/[0.03] border border-line rounded-xl">
                   <span className="text-xl flex-shrink-0">{t.icon}</span>
                   <div>
-                    <p className="text-xs font-semibold text-white/85">{t.label}</p>
-                    <p className="text-xs text-gray-400 mt-0.5">{t.sub}</p>
+                    <p className="text-xs font-semibold text-ink-2">{t.label}</p>
+                    <p className="text-xs text-ink-3 mt-0.5">{t.sub}</p>
                   </div>
                 </div>
               ))}
@@ -218,11 +218,11 @@ export default async function ProductDetailPage({ params }: Props) {
       </div>
 
       {/* ── Mobile sticky CTA bar ─────────────────────────────────────────────── */}
-      <div className="sm:hidden fixed bottom-0 left-0 right-0 z-30 bg-[#09090c]/95 backdrop-blur-xl border-t border-white/[0.08] px-4 py-3" style={{ paddingBottom: "calc(0.75rem + env(safe-area-inset-bottom))" }}>
+      <div className="sm:hidden fixed bottom-0 left-0 right-0 z-30 bg-page/95 backdrop-blur-xl border-t border-line px-4 py-3" style={{ paddingBottom: "calc(0.75rem + env(safe-area-inset-bottom))" }}>
         <div className="flex items-center gap-3">
           <div className="flex-1 min-w-0">
-            <p className="text-[11px] text-gray-500 leading-none mb-0.5 truncate">{p.name}</p>
-            <p className="text-lg font-black text-amber-400 leading-none">{formatKES(p.priceKES)}</p>
+            <p className="text-[11px] text-ink-3 leading-none mb-0.5 truncate">{p.name}</p>
+            <p className="text-lg font-black text-price leading-none">{formatKES(p.priceKES)}</p>
           </div>
           <WhatsAppButton
             productName={p.name}

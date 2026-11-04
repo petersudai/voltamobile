@@ -64,8 +64,8 @@ export function Header() {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
           scrolled
-            ? "bg-[#09090c]/95 backdrop-blur-xl border-b border-white/[0.07] shadow-2xl shadow-black/40"
-            : "bg-[#09090c]/50 backdrop-blur-md"
+            ? "bg-[#09090c] border-b border-white/[0.08]"
+            : "bg-[#09090c]/80"
         )}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -119,7 +119,7 @@ export function Header() {
                 href={whatsappUrl(WHATSAPP_NUMBER, "Hi, I saw the Volta Mobile demo site and I'd like to discuss building something similar for my shop.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden md:flex items-center gap-2 px-4 py-2 rounded-xl bg-[#25D366] hover:bg-[#22c55e] text-white text-sm font-semibold transition-all shadow-lg shadow-green-900/20"
+                className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg bg-[#157a3f] hover:bg-[#116534] text-white text-sm font-semibold transition-colors"
               >
                 <Phone className="w-4 h-4" />
                 WhatsApp Us
@@ -158,7 +158,7 @@ export function Header() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden fixed inset-0 bg-black/40 backdrop-blur-sm z-40"
+              className="md:hidden fixed inset-0 bg-black/60 z-40"
               onClick={closeMenu}
             />
 
@@ -169,7 +169,7 @@ export function Header() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.22, ease: "easeOut" }}
-              className="md:hidden fixed top-16 left-0 right-0 z-50 bg-[#09090c]/98 backdrop-blur-xl border-b border-white/[0.06] shadow-2xl shadow-black/60"
+              className="md:hidden fixed top-16 left-0 right-0 z-50 bg-[#09090c] border-b border-white/[0.08]"
             >
               <div className="px-4 pt-3 pb-5">
                 {/* Search */}
@@ -217,7 +217,7 @@ export function Header() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={closeMenu}
-                    className="flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl bg-[#25D366] hover:bg-[#22c55e] text-white text-sm font-semibold transition-all active:scale-[0.98]"
+                    className="flex items-center justify-center gap-2 px-4 py-3.5 rounded-lg bg-[#157a3f] hover:bg-[#116534] text-white text-sm font-semibold transition-colors"
                   >
                     <Phone className="w-4 h-4" />
                     WhatsApp Us

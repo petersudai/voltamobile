@@ -15,9 +15,11 @@ interface ProductCardProps {
   className?: string;
   /** Pass true for above-the-fold cards to skip lazy loading */
   priority?: boolean;
+  /** Shorter image area, for cards stacked beside a taller feature card */
+  compactImage?: boolean;
 }
 
-export function ProductCard({ product, className, priority = false }: ProductCardProps) {
+export function ProductCard({ product, className, priority = false, compactImage = false }: ProductCardProps) {
   const [imgError, setImgError] = useState(false);
   const hasDiscount = product.marketPriceKES && product.marketPriceKES > product.priceKES;
   const discountPct = hasDiscount ? discount(product.marketPriceKES!, product.priceKES) : 0;
@@ -28,13 +30,13 @@ export function ProductCard({ product, className, priority = false }: ProductCar
     <Link
       href={`/phones/${product.slug}`}
       className={cn(
-        "group relative bg-[#0e0e12] rounded-2xl overflow-hidden border border-white/[0.07] hover:border-white/[0.16] transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/60 flex flex-col",
+        "group relative bg-[#0e0e12] rounded-2xl overflow-hidden border border-white/[0.07] hover:border-blue-400/40 transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_-20px_rgba(37,99,235,0.5)] flex flex-col",
         !product.isAvailable && "opacity-60 pointer-events-none",
         className
       )}
     >
       {/* Image */}
-      <div className="relative overflow-hidden aspect-[4/3] bg-[#0e0e12]">
+      <div className={cn("relative overflow-hidden bg-[#0e0e12] bg-[radial-gradient(ellipse_at_50%_45%,rgba(37,99,235,0.28),transparent_68%)]", compactImage ? "aspect-[16/10]" : "aspect-[4/3]")}>
         {imgError || !product.images[0] ? (
           <div className="absolute inset-0 flex items-center justify-center bg-[#111116]">
             <Smartphone className="w-10 h-10 text-gray-800" />
@@ -118,7 +120,7 @@ export function ProductCard({ product, className, priority = false }: ProductCar
         {/* Price */}
         <div className="mt-auto flex items-end justify-between gap-1 sm:gap-2">
           <div>
-            <p className="text-base sm:text-lg font-black text-amber-400 leading-none">
+            <p className="text-base sm:text-lg font-black text-amber-400 leading-none tabular">
               {formatKES(product.priceKES)}
             </p>
             {product.priceUSD && (

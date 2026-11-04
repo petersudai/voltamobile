@@ -73,8 +73,7 @@ const brands = [
       "https://images.unsplash.com/photo-1526406915894-7bcd65f60845?w=600&q=80&auto=format&fit=crop",
     gradient: "from-black/80 via-black/50 to-black/20",
     cardBg: "bg-gray-900",
-    badge: "Most Popular",
-    badgeBg: "bg-blue-600",
+    glow: "rgba(148,163,184,0.45)",
     browseLabel: "Browse iPhones",
   },
   {
@@ -88,8 +87,7 @@ const brands = [
       "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=600&q=80&auto=format&fit=crop",
     gradient: "from-blue-950/80 via-blue-950/50 to-blue-950/20",
     cardBg: "bg-blue-950",
-    badge: "Top Value",
-    badgeBg: "bg-emerald-600",
+    glow: "rgba(59,130,246,0.6)",
     browseLabel: "Browse Samsung",
   },
   {
@@ -98,13 +96,11 @@ const brands = [
     Logo: GoogleLogo,
     logoClass: "w-10 h-10 drop-shadow-lg",
     description: "Pixel 6 through Pixel 8 Pro. Pure Android experience.",
-    // Google Pixel 6 Pro — confirmed Unsplash photo
     bgImage:
       "https://images.unsplash.com/photo-1598550874175-4d0ef436c909?w=600&q=80&auto=format&fit=crop",
     gradient: "from-emerald-950/80 via-emerald-950/50 to-emerald-950/20",
     cardBg: "bg-emerald-950",
-    badge: "Pure Android",
-    badgeBg: "bg-violet-600",
+    glow: "rgba(52,211,153,0.5)",
     browseLabel: "Browse Pixels",
   },
 ];
@@ -113,23 +109,30 @@ const brands = [
 
 export function BrandShowcase() {
   return (
-    <section className="py-20 bg-gray-950">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden py-20 sm:py-24 bg-[#0a0a0f] border-t border-white/5">
+      <div className="pointer-events-none absolute inset-0" aria-hidden>
+        <div className="absolute left-1/2 top-0 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse,rgba(37,99,235,0.16),transparent_65%)]" />
+      </div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
-            Premium Brands, Verified Stock
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-white">
+            <span className="bg-gradient-to-r from-amber-300 via-emerald-300 to-cyan-300 bg-clip-text text-transparent">
+              iPhone
+            </span>
+            , Samsung and Pixel
           </h2>
           <p className="mt-3 text-gray-400 text-base sm:text-lg max-w-xl mx-auto">
-            We stock only the most sought-after devices — sourced directly from the UK.
+            Imported from the UK and checked in the shop before it is listed.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {brands.map(({ name, slug, Logo, logoClass, description, bgImage, gradient, cardBg, badge, badgeBg, browseLabel }) => (
+          {brands.map(({ name, slug, Logo, logoClass, description, bgImage, gradient, cardBg, glow, browseLabel }) => (
             <Link
               key={slug}
               href={`/phones?brand=${slug}`}
-              className={`group relative rounded-3xl overflow-hidden border border-white/10 hover:border-white/25 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/60 ${cardBg} min-h-[260px] flex flex-col justify-end`}
+              style={{ ["--glow" as string]: glow }}
+              className={`group relative rounded-3xl overflow-hidden border border-white/10 hover:border-white/30 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_28px_70px_-24px_var(--glow)] ${cardBg} min-h-[300px] flex flex-col justify-end`}
             >
               {/* Background phone image */}
               <div className="absolute inset-0">
@@ -141,23 +144,18 @@ export function BrandShowcase() {
                   className="object-cover opacity-40 group-hover:opacity-55 group-hover:scale-[1.04] transition-all duration-500"
                 />
                 <div className={`absolute inset-0 bg-gradient-to-t ${gradient}`} />
+                <div className="absolute -top-16 -right-16 h-64 w-64 rounded-full bg-[radial-gradient(circle,var(--glow),transparent_65%)] opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
 
               {/* Content */}
               <div className="relative p-7">
-                {/* Badge */}
-                <span className={`inline-flex px-2.5 py-1 rounded-full text-xs font-bold text-white ${badgeBg} mb-5`}>
-                  {badge}
-                </span>
-
-                {/* Official brand logo — replaces the name text */}
                 <div className="mb-4">
                   <Logo className={logoClass} />
                 </div>
 
-                <p className="text-sm text-white/65 leading-relaxed">{description}</p>
+                <p className="text-sm sm:text-base text-white/75 leading-relaxed">{description}</p>
 
-                <div className="mt-5 flex items-center gap-2 text-white/80 text-sm font-semibold group-hover:gap-3 transition-all">
+                <div className="mt-5 inline-flex items-center gap-2 py-1.5 text-white text-sm font-semibold group-hover:gap-3 transition-all">
                   {browseLabel}
                   <ArrowRight className="w-4 h-4" />
                 </div>

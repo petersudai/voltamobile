@@ -6,19 +6,23 @@ import { whatsappUrl } from "@/lib/utils";
 
 export function Footer() {
   return (
-    <footer className="bg-gray-950 text-gray-400">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+    <footer className="relative overflow-hidden bg-[#050508] text-gray-400 border-t border-white/[0.06]">
+      <div className="pointer-events-none absolute inset-x-0 top-0" aria-hidden>
+        <div className="h-px bg-gradient-to-r from-transparent via-blue-500/60 to-transparent" />
+        <div className="mx-auto h-48 w-[700px] max-w-full bg-[radial-gradient(ellipse_at_top,rgba(37,99,235,0.18),transparent_70%)]" />
+      </div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-10">
           <div className="col-span-2 md:col-span-1">
             <Logo size="md" variant="light" />
             <p className="mt-4 text-sm leading-relaxed text-gray-500">
-              Nairobi&apos;s most trusted source for premium smartphones. Ex-UK, Brand New, Refurbished &amp; Used — all battery-tested and verified.
+              Ex-UK, brand new, refurbished and used phones on Moi Avenue, Nairobi CBD. Battery-tested before listing.
             </p>
             <a
               href={whatsappUrl(WHATSAPP_NUMBER, "Hi! I'd like to enquire about your phones.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#25D366] hover:bg-[#1ebe5d] text-white text-sm font-semibold transition-colors"
+              className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#157a3f] hover:bg-[#116534] text-white text-sm font-semibold transition-colors"
             >
               <Phone className="w-4 h-4" />
               Chat on WhatsApp
@@ -37,7 +41,7 @@ export function Footer() {
                 { href: "/phones?condition=BRAND_NEW", label: "Brand New" },
               ].map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="hover:text-white transition-colors">
+                  <Link href={link.href} className="inline-block py-1.5 hover:text-white transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -87,7 +91,7 @@ export function Footer() {
         <div className="mt-12 rounded-2xl overflow-hidden border border-gray-800 relative shadow-2xl shadow-black/40">
           {/* Map iframe */}
           <iframe
-            title="Volta Mobile — Store Location"
+            title="Volta Mobile store location"
             src="https://maps.google.com/maps?q=Moi+Avenue,+Nairobi+CBD,+Kenya&t=&z=17&ie=UTF8&iwloc=&output=embed"
             width="100%"
             height="240"
@@ -97,11 +101,8 @@ export function Footer() {
             referrerPolicy="no-referrer-when-downgrade"
           />
 
-          {/* Gradient vignette — blends map into dark footer */}
-          <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-gray-950/60 to-transparent pointer-events-none" />
-
-          {/* Store info card — overlaid at the bottom */}
-          <div className="absolute bottom-3 left-3 right-3 z-10 bg-gray-900/90 backdrop-blur-md rounded-xl border border-white/[0.07] px-4 py-3 flex items-center gap-3">
+          {/* Store info card, overlaid at the bottom */}
+          <div className="absolute bottom-3 left-3 right-3 z-10 bg-gray-900 rounded-lg border border-white/[0.1] px-4 py-3 flex items-center gap-3">
             {/* Pin icon */}
             <div className="w-8 h-8 flex-shrink-0 rounded-lg bg-blue-600/20 border border-blue-500/20 flex items-center justify-center">
               <MapPin className="w-4 h-4 text-blue-400" />
@@ -122,15 +123,15 @@ export function Footer() {
               href="https://maps.google.com/?q=Moi+Avenue,+Nairobi+CBD,+Kenya"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-shrink-0 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition-colors whitespace-nowrap"
+              className="flex-shrink-0 px-3 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold transition-colors whitespace-nowrap"
             >
               Get Directions
             </a>
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-gray-800 space-y-4 text-xs text-gray-600">
-          <p className="text-center text-gray-700 leading-relaxed max-w-2xl mx-auto">
+        <div className="mt-8 pt-8 border-t border-gray-800 space-y-4 text-xs text-gray-400">
+          <p className="text-center text-gray-400 leading-relaxed max-w-2xl mx-auto">
             This is a demo site built to showcase what your phone shop could look like online. All products, prices, and contact details are for illustration purposes only.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -145,18 +146,18 @@ export function Footer() {
                     href="https://sudaidevfolio.vercel.app"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-white transition-colors duration-200 font-medium"
+                    className="inline-block py-2 text-gray-400 hover:text-white transition-colors duration-200 font-medium"
                   >
                     Peter Sudai
                   </a>
                 </p>
-                <p className="text-gray-600">
+                <p className="text-gray-400">
                   Want a site like this for your shop?{" "}
                   <a
                     href="https://sudaidevfolio.vercel.app"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-white transition-colors duration-200 font-medium"
+                    className="inline-block py-2 text-gray-400 hover:text-white transition-colors duration-200 font-medium"
                   >
                     Let&apos;s talk.
                   </a>

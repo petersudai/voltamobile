@@ -1,13 +1,12 @@
 export const dynamic = "force-dynamic";
 
 import { Hero } from "@/components/storefront/Hero";
-import { TrustBar } from "@/components/storefront/TrustBar";
 import { BrandShowcase } from "@/components/storefront/BrandShowcase";
 import { FeaturedProducts } from "@/components/storefront/FeaturedProducts";
 import { getHeroImageUrl, HERO_IMAGE_DEFAULT } from "@/lib/settings";
 import { prisma } from "@/lib/prisma";
 import { Suspense } from "react";
-import { Loader2 } from "lucide-react";
+import { BatteryCharging, Loader2, Plane, ShieldCheck, Store, Tag, Truck } from "lucide-react";
 import type { Product } from "@/types";
 
 async function getHeroProduct() {
@@ -31,7 +30,6 @@ export default async function HomePage() {
   return (
     <>
       <Hero heroImageUrl={heroImageUrl} heroProduct={heroProduct} />
-      <TrustBar />
       <Suspense
         fallback={
           <div className="py-20 flex justify-center">
@@ -50,69 +48,70 @@ export default async function HomePage() {
 function WhyVoltaSection() {
   const reasons = [
     {
-      num: "01",
-      emoji: "🔋",
-      title: "Battery Health First",
-      body: "Every Ex-UK and refurbished phone is tested. The exact battery percentage is shown on each listing — no surprises after purchase.",
+      Icon: BatteryCharging,
+      tint: "from-emerald-400 to-cyan-400",
+      title: "Battery health on every listing",
+      body: "Ex-UK and refurbished phones are tested, and the exact battery percentage is on the listing.",
     },
     {
-      num: "02",
-      emoji: "🇬🇧",
-      title: "Authentic Ex-UK Stock",
-      body: "Sourced directly from the UK market — genuine devices, not Chinese replicas. The condition you see is exactly what you get.",
+      Icon: Plane,
+      tint: "from-blue-400 to-indigo-400",
+      title: "Imported from the UK",
+      body: "Genuine devices from the UK market. The condition on the listing is the condition of the phone.",
     },
     {
-      num: "03",
-      emoji: "🏪",
-      title: "Walk In, Walk Out",
-      body: "Our physical store in Nairobi CBD lets you inspect the device before buying. No blind purchases, ever.",
+      Icon: Store,
+      tint: "from-amber-300 to-orange-400",
+      title: "Inspect it in the shop",
+      body: "Visit us on Moi Avenue and check the phone before you buy it.",
     },
     {
-      num: "04",
-      emoji: "⚡",
-      title: "Same-Day Delivery",
-      body: "Order before 2 PM and we deliver within Nairobi the same day. In CBD? Just walk in — we'll be ready.",
+      Icon: Truck,
+      tint: "from-cyan-300 to-blue-400",
+      title: "Same-day delivery",
+      body: "Order before 2 PM and it reaches you in Nairobi the same day. In the CBD, walk in.",
     },
     {
-      num: "05",
-      emoji: "💰",
-      title: "Honest Pricing",
-      body: "We show you both the market price and our price. What you see is what you pay — no hidden fees, no tricks.",
+      Icon: Tag,
+      tint: "from-rose-400 to-orange-300",
+      title: "Market price next to ours",
+      body: "Each listing shows the market price beside our price. The price you see is the price you pay.",
     },
     {
-      num: "06",
-      emoji: "🤝",
-      title: "After-Sales Support",
-      body: "WhatsApp us any time after purchase. Every device we sell is backed by our 7-Day Exchange Guarantee.",
+      Icon: ShieldCheck,
+      tint: "from-emerald-300 to-teal-400",
+      title: "Support after the sale",
+      body: "WhatsApp us any time after you buy. Every phone comes with a 7-Day Exchange Guarantee.",
     },
   ];
 
   return (
-    <section className="bg-[#050508] border-t border-white/[0.04]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-        <div className="mb-16 max-w-xl">
-          <p className="text-blue-500 text-xs font-bold uppercase tracking-[0.2em] mb-4">
-            Our Promise
-          </p>
-          <h2 className="text-4xl sm:text-5xl font-black text-white leading-tight tracking-tight">
-            Why Nairobi<br />Trusts Volta
-          </h2>
-        </div>
+    <section className="relative overflow-hidden bg-[#06060a] border-t border-white/[0.06]">
+      <div className="pointer-events-none absolute inset-0" aria-hidden>
+        <div className="absolute -bottom-40 left-[-10%] h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,rgba(37,99,235,0.2),transparent_65%)]" />
+        <div className="absolute -top-32 right-[-8%] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(250,204,21,0.1),transparent_65%)]" />
+      </div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+        <h2 className="mb-10 sm:mb-14 max-w-xl text-3xl sm:text-5xl font-extrabold text-white leading-tight">
+          How we{" "}
+          <span className="bg-gradient-to-r from-amber-300 via-emerald-300 to-cyan-300 bg-clip-text text-transparent">
+            sell phones
+          </span>
+        </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.05] rounded-3xl overflow-hidden border border-white/[0.05]">
-          {reasons.map((r) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+          {reasons.map(({ Icon, tint, title, body }) => (
             <div
-              key={r.title}
-              className="p-6 sm:p-8 bg-[#050508] hover:bg-[#0a0a10] transition-colors duration-300 group"
+              key={title}
+              className="group rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.015] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-white/25 hover:from-white/[0.09]"
             >
-              <div className="flex items-start justify-between mb-6">
-                <span className="text-3xl">{r.emoji}</span>
-                <span className="text-5xl font-black text-white/[0.04] group-hover:text-white/[0.07] transition-colors leading-none">
-                  {r.num}
-                </span>
+              <div
+                className={`mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${tint} shadow-lg shadow-black/40`}
+              >
+                <Icon className="h-6 w-6 text-gray-950" strokeWidth={2.25} />
               </div>
-              <h3 className="font-bold text-white text-base mb-2">{r.title}</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">{r.body}</p>
+              <h3 className="font-bold text-white text-lg mb-2">{title}</h3>
+              <p className="text-gray-400 text-base leading-relaxed">{body}</p>
             </div>
           ))}
         </div>

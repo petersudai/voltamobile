@@ -27,10 +27,10 @@ export function PrimeFeatureCard({ product }: PrimeFeatureCardProps) {
   return (
     <Link
       href={`/phones/${product.slug}`}
-      className="group relative flex flex-col rounded-2xl overflow-hidden border border-white/[0.07] hover:border-white/[0.18] transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/70 bg-[#0e0e12] h-full"
+      className="group relative flex flex-col rounded-3xl overflow-hidden border border-blue-400/20 hover:border-blue-400/50 transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:shadow-[0_30px_80px_-20px_rgba(37,99,235,0.55)] shadow-[0_20px_60px_-30px_rgba(37,99,235,0.45)] bg-[#0e0e12] h-full"
     >
       {/* ── Image section ────────────────────────────────────────────── */}
-      <div className="relative flex-1 min-h-[240px] sm:min-h-[300px] overflow-hidden bg-[#0e0e12]">
+      <div className="relative flex-1 min-h-[240px] sm:min-h-[300px] overflow-hidden bg-[#0e0e12] bg-[radial-gradient(ellipse_at_50%_45%,rgba(37,99,235,0.4),rgba(37,99,235,0.1)_45%,transparent_70%)]">
         {/* Condition + battery badges */}
         <div className="absolute top-4 left-4 z-10 flex items-start gap-2 flex-wrap">
           <ConditionBadge condition={product.condition} />
@@ -87,7 +87,7 @@ export function PrimeFeatureCard({ product }: PrimeFeatureCardProps) {
         {/* Price row */}
         <div className="mt-4 flex items-end justify-between gap-4">
           <div>
-            <p className="text-2xl font-black text-amber-400 leading-none">
+            <p className="text-2xl font-black text-amber-400 leading-none tabular">
               {formatKES(product.priceKES)}
             </p>
             {product.marketPriceKES && product.marketPriceKES > product.priceKES && (

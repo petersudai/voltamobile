@@ -2,7 +2,7 @@ export const WHATSAPP_NUMBER = "+254700000000";
 export const STORE_NAME = "Volta Mobile";
 export const STORE_TAGLINE = "Powered by Trust.";
 export const STORE_ADDRESS = "Nairobi CBD, Moi Avenue, Ground Floor";
-export const STORE_HOURS = "Mon–Sat 8:30 AM – 7:00 PM";
+export const STORE_HOURS = "Mon to Sat, 8:30 AM to 7:00 PM";
 export const USD_TO_KES_RATE = 130;
 
 export const CONDITION_LABELS: Record<string, string> = {

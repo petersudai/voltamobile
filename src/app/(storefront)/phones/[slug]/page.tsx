@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const product = await getProduct(slug);
   if (!product) return {};
   return {
-    title: `${product.name} — ${product.condition.replace("_", " ")}`,
+    title: `${product.name}, ${product.condition.replace("_", " ")}`,
     description: `Buy ${product.name} in Nairobi CBD. ${product.condition === "EX_UK" ? "Ex-UK import, " : ""}${product.batteryHealth ? `Battery: ${product.batteryHealth}%, ` : ""}Price: ${formatKES(product.priceKES)}.`,
   };
 }
@@ -135,7 +135,7 @@ export default async function ProductDetailPage({ params }: Props) {
             {/* Price block */}
             <div className="bg-white/[0.03] rounded-2xl border border-white/[0.08] p-5">
               <div className="flex items-baseline gap-3 flex-wrap">
-                <span className="text-3xl font-black text-amber-400 leading-none">
+                <span className="text-3xl font-black text-amber-400 leading-none tabular">
                   {formatKES(p.priceKES)}
                 </span>
                 {p.priceUSD && (

@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Archivo, Public_Sans } from "next/font/google";
 import "./globals.css";
 
-const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
+const archivo = Archivo({ subsets: ["latin"], variable: "--font-display", weight: ["600", "700", "800"] });
+const publicSans = Public_Sans({ subsets: ["latin"], variable: "--font-body" });
 
 export const metadata: Metadata = {
   title: {
-    default: "Volta Mobile — Premium Phones in Nairobi CBD",
+    default: "Volta Mobile | Ex-UK and new phones on Moi Avenue, Nairobi",
     template: "%s | Volta Mobile",
   },
   description:
-    "Nairobi's most trusted source for Ex-UK, Brand New & Refurbished smartphones. iPhone, Samsung Galaxy & Google Pixel — battery health certified.",
+    "Ex-UK, brand new and refurbished iPhone, Samsung Galaxy and Google Pixel phones on Moi Avenue, Nairobi CBD. Every listing shows the real battery health.",
   keywords: [
     "iPhone Nairobi",
     "Ex-UK phones Kenya",
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${geist.variable} h-full`} suppressHydrationWarning>
+    <html lang="en" className={`${archivo.variable} ${publicSans.variable} h-full`} suppressHydrationWarning>
       <body className="min-h-full antialiased font-sans">{children}</body>
     </html>
   );

@@ -46,11 +46,10 @@ export function Hero({ heroImageUrl, heroProduct }: HeroProps) {
 
   return (
     <section className="relative overflow-hidden bg-page border-b border-line pt-28 pb-16 sm:pt-32 sm:pb-24 lg:pt-36 lg:pb-28">
-      {/* Atmosphere: colour washes + fading grid */}
+      {/* Atmosphere: colour washes */}
       <div className="pointer-events-none absolute inset-0" aria-hidden>
         <div className="absolute -top-40 right-[-10%] h-[620px] w-[620px] rounded-full bg-[radial-gradient(circle,rgba(37,99,235,0.35),transparent_65%)]" />
         <div className="absolute bottom-[-220px] left-[-10%] h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,rgba(250,204,21,0.14),transparent_65%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(var(--grid-line)_1px,transparent_1px),linear-gradient(90deg,var(--grid-line)_1px,transparent_1px)] bg-[size:56px_56px] [mask-image:radial-gradient(ellipse_at_70%_40%,black,transparent_70%)]" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-10 items-center">

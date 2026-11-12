@@ -144,7 +144,7 @@ export function Footer() {
                 <p>
                   Built by{" "}
                   <a
-                    href="https://sudaidevfolio.vercel.app"
+                    href="https://petersudai.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-block py-2 text-ink-3 hover:text-ink transition-colors duration-200 font-medium"
@@ -155,7 +155,7 @@ export function Footer() {
                 <p className="text-ink-3">
                   Want a site like this for your shop?{" "}
                   <a
-                    href="https://sudaidevfolio.vercel.app"
+                    href="https://petersudai.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-block py-2 text-ink-3 hover:text-ink transition-colors duration-200 font-medium"
